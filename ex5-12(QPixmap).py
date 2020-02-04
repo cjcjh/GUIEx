@@ -13,7 +13,7 @@ class MyApp(QWidget):
      self.initUI()
 
  def initUI(self):
-     pixmap = QPixmap('/home/cj/Downloads/DjVix7nVAAAxHS1.jpeg')
+     pixmap = QPixmap('/home/cj/Downloads/7.jpg')
 
      lbl_img = QLabel()
      lbl_img.setPixmap(pixmap)

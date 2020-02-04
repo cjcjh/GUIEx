@@ -32,7 +32,7 @@ class MyApp(QMainWindow):
 
     def showDialog(self):
         fname = QFileDialog.getOpenFileName(self, 'Open file', './')
-        print('debug:'+fname[0])
+
         if fname[0]:
             f = open(fname[0], 'r')
 
