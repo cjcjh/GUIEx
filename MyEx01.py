@@ -58,8 +58,8 @@ class MyApp(QMainWindow):
             resizeImage = cv2.resize(self.cvImage, dsize=(self.width, self.height))
             RGBImage = cv2.cvtColor(resizeImage, cv2.COLOR_BGR2RGB)
             self.mQImage = QImage(RGBImage, self.width, self.height, RGBImage.strides[0], QImage.Format_RGB888)
-            #plt.imshow(RGBImage)
-            #plt.show()
+            plt.imshow(RGBImage)
+            plt.show()
             self.update()
 
     def paintEvent(self, QPaintEvent):
