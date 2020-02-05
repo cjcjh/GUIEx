@@ -10,6 +10,9 @@ import matplotlib.pyplot as plt
 from PyQt5.QtCore import Qt
 from PIL import Image
 
+from PyQt5.QtWidgets import *
+from PyQt5.QtGui import *
+from PyQt5.QtCore import *
 
 class MyApp(QWidget):
     def __init__(self, parent=None):
@@ -40,18 +43,26 @@ class MyApp(QWidget):
         self.lbl_size.setAlignment(Qt.AlignCenter)
 
         grid.addWidget(self.checkbox1, 0, 0)
+        self.checkbox1.stateChanged.connect(self.image_resize)
         grid.addWidget(self.checkbox2, 1, 0)
+        self.checkbox2.stateChanged.connect(self.image_show)
         grid.addWidget(self.checkbox3, 2, 0)
+        self.checkbox3.stateChanged.connect(self.image_show)
         grid.addWidget(self.checkbox4, 3, 0)
+        self.checkbox4.stateChanged.connect(self.image_show)
         grid.addWidget(self.checkbox5, 4, 0)
+        self.checkbox5.stateChanged.connect(self.image_show)
         grid.addWidget(QLabel('PATH'), 6, 0)
         grid.addWidget(self.lbl_img, 7, 0)
 
         # 2열
-        self.ReSize = QLineEdit(self)
-        self.ReSize.setAcceptDrops(False)
-        grid.addWidget(self.ReSize, 0, 1)
-        self.ReSize.returnPressed.connect(self.image_show)
+        self.ReSize_A = QLineEdit()
+        self.ReSize_A.setAcceptDrops(False)
+        #self.ReSize_A.setInputMask(0.0)
+        #self.ReSize_A.setPlaceholderText('Float Number')
+        #self.ReSize_A.act.connect(self.input_mask_changed)
+        grid.addWidget(self.ReSize_A, 0, 1)
+        self.ReSize_A.returnPressed.connect(self.input_mask_changed)
 
         self.RoTate = QLineEdit()
         self.RoTate.setAcceptDrops(False)
@@ -87,22 +98,45 @@ class MyApp(QWidget):
     def image_show(self):
         search_image = '/home/cj/Downloads/' + self.path.text()
         self.pixmap = QPixmap(search_image)
-        self.lbl_img.setPixmap(self.pixmap)
-        print('이미지 바꿔써')
+        self.lbl_size = QLabel('Width: ' + str(self.pixmap.width()) + ', Height: ' + str(self.pixmap.height()))
+        self.lbl_size.setAlignment(Qt.AlignCenter)
 
-        #click 시 checkbox 확인인
-        #사이즈 수정
-        reresize = self.ReSize
-
+        ##사이즈 수정
         # lbl_img.setPixmap(pixmap.scaled(640, 480, Qt.KeepAspectRatio, Qt.FastTransformation))
         # lbl_img.setPixmap(pixmap.scaledToHeight(1600, Qt.FastTransformation))
         # lbl_img.setPixmap(pixmap.scaledToWidth(1524, Qt.FastTransformation))
 
+        #click 시 checkbox 확인인
+        #사이즈 수정
+        if self.checkbox1.isChecked() == True:
+##pixmap
+            img = cv2.imread(search_image)
+            reresize = float(self.ReSize_A.text())
+            self.dst = cv2.resize(img, dsize=(0, 0), fx=reresize, fy=reresize, interpolation=cv2.INTER_LINEAR)
+            cv2.imshow('dst', self.dst)
+#            t_width = int(self.pixmap.width())*float(self.ReSize_A.text())
+#            temp = self.ReSize_A.text()
+#            t_height = int(self.pixmap.height())*float(self.ReSize_A.text())
+ #           print(t_width)
+ #           print(t_height)
+
+            #self.lbl_size.set('Width: ' + str(t_width) + ', Height: ' + str(t_height))
+            #self.lbl_size.setAlignment(Qt.AlignCenter)
+            #self.lbl_img.setPixmap(self.pixmap.scaled(self.pixmap.width()*self.ReSize_A, self.pixmap.height()*self.ReSize_A, Qt.KeepAspectRatio, Qt.FastTransformation))
+
+
+        self.lbl_img.setPixmap(self.pixmap)  # 이미지 보여주는 줄
+        print('이미지 출력완료')
+
         # 각도회전
         rorotation = self.RoTate
 
-
-
+        # 사이즈 수정함수
+    def image_resize(self):
+        if self.checkbox1.isChecked() == True:
+            self.input_mask_changed()
+    def input_mask_changed(self):
+        self.ReSize_A.setInputMask('0.0')
 
 
 if __name__ == '__main__':

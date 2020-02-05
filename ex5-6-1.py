@@ -164,7 +164,7 @@ class MyApp(QWidget):
         if index == 0:
             self.input_mask_le.setInputMask('')
         elif index == 1:
-            self.input_mask_le.setInputMask('000-0000-0000')
+            self.input_mask_le.setInputMask('0.0')
         elif index == 2:
             self.input_mask_le.setInputMask('0000-00-00')
             self.input_mask_le.setText('20190410')
