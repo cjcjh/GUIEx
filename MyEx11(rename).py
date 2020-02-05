@@ -13,7 +13,7 @@ from PIL import Image
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
-import os
+from PyQt5 import QtGui, QtCore
 
 
 class MyApp(QWidget):
@@ -161,22 +161,11 @@ class MyApp(QWidget):
     def image_rename(self):
         print('rename click')
     def savefile(self):
-        """Save log to file.
-        home = str('/home/cj/')
-        self.output = ""
-        self.output = QFileDialog.getSaveFileName(self, 'Save file', home, "ReST files (*.rst)")
-        if self.output[0] is not "":
-            with open(self.output[0], 'w') as f:
-                f.write(self.te.toPlainText())
-
-            btMessage = f'File saved as {self.output[0]}.'
-        else:
-            btMessage = "Can't save. No file specified."
-        #self.systemtray_icon.showMessage(APP_NAME, btMessage, QIcon(ICON_PATH), 5000)
-        self.statusBar().showMessage(btMessage)"""
-        filename = QFileDialog.getSaveFileName(self, 'Save Image As', os.sep.join((os.path.expanduser('~'), 'Desktop')),
-                                               'Image Files (*.png *.jpg *.jpeg)')
-        #RPiCamera.saveImage(self.rgb_array, filename[0])
+        name = QFileDialog.getSaveFileName(self, 'Save File')
+       # file = open(name, 'w')
+       # text = self.textEdit.toPlainText()
+       # file.write(text)
+       # file.close()
 
 
 if __name__ == '__main__':
