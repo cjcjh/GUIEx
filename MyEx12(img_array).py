@@ -9,18 +9,23 @@ from PyQt5.QtGui import QFont, QPixmap
 import matplotlib.pyplot as plt
 from PyQt5.QtCore import Qt
 from PIL import Image
-
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 
 
 class MyApp(QWidget):
+
     def __init__(self, parent=None):
         super().__init__()
         self.initUI()
         self.lb_1 = QLabel()
 
+        self.check = 0
+        self.imgresize = 0
+        self.imgrot = 0
+        self.imghflip = 0
+        self.imgvflip = 0
 
     def initUI(self):
         grid = QGridLayout()
@@ -101,7 +106,7 @@ class MyApp(QWidget):
         #사이즈 수정
         if self.checkbox1.isChecked() == True:
             ##pixmap + cv2 활용
-            img = cv2.imread(self.search_image)
+            img = cv2.imread(self.search_image)    # img = 이미지배열
             reresize = float(self.ReSize_A.text())
             self.resize_Img = cv2.resize(img, dsize=(0, 0), fx=reresize, fy=reresize, interpolation=cv2.INTER_LINEAR)
             cv2.imwrite("test.jpg", self.resize_Img)
@@ -109,32 +114,65 @@ class MyApp(QWidget):
 
         # 각도회전
         if self.checkbox2.isChecked() == True:
-            src = cv2.imread(self.search_image, cv2.IMREAD_COLOR)
+            if self.imgresize == 1:
+                src = self.resize_Img
+            elif self.imgrot == 1:
+                src = cv2.imread(self.search_image, cv2.IMREAD_COLOR)
             height, width, channel = src.shape
             rorotation = float(self.RoTate.text())
             matrix = cv2.getRotationMatrix2D((width/2, height/2), rorotation, 1)
-            rotation_Img = cv2.warpAffine(src, matrix, (width, height))
-            cv2.imwrite("rotation.jpg", rotation_Img)
-            self.pixmap.load("rotation.jpg")
+            self.rotation_Img = cv2.warpAffine(src, matrix, (width, height))
+
+    #        cv2.imwrite("rotation.jpg", self.rotation_Img)
+    #        self.pixmap.load("rotation.jpg")
 
         if self.checkbox3.isChecked() == True:
-            im = cv2.imread(self.search_image)
-           # im2 = cv2.cvtColor(im, cv2.COLOR_BGR2RGB)
-            im2_hflip = cv2.flip(im, 0)
-            cv2.imwrite("im_hflip.jpg", im2_hflip)
+            if self.check == 1:
+                self.im = cv2.imread(self.search_image)
+            elif self.check == 2:
+                if self.imgresize == 1:
+                    self.im = self.resize_Img
+                elif self.imgrot == 1:
+                    self.im = self.rotation_Img
+                elif self.imghflip == 1:
+                    self.im = cv2.imread(self.search_image)
+            elif self.check == 3:
+                if self.imgresize == 1:
+                    self.im = self.resize_Img
+                elif self.imgrot == 1:
+                    self.im = self.rotation_Img
+            elif self.check == 4:
+                self.im = self.rotation_Img
+            self.im2_hflip = cv2.flip(self.im, 0)
+            cv2.imwrite("im_hflip.jpg", self.im2_hflip)
             self.pixmap.load("im_hflip.jpg")
 
         if self.checkbox4.isChecked() == True:
-            im = cv2.imread(self.search_image)
-            im_vflip = cv2.flip(im, 1)
-            cv2.imwrite("im_vflip.jpg", im_vflip)
+            if self.check == 1:
+                self.img = cv2.imread(self.search_image)
+            elif self.check == 2:
+                if self.imgresize == 1:
+                    self.img = self.resize_Img
+                elif self.imgrot == 1:
+                    self.img = self.rotation_Img
+                elif self.imghflip == 1:
+                    self.img = self.im2_hflip
+                elif self.imgvflip == 1:
+                    self.img = cv2.imread(self.search_image)
+            elif self.check == 3:
+                if self.imghflip == 1:
+                    self.img = self.im2_hflip
+                elif self.imgrot == 1:
+                    self.img = self.rotation_Img
+            elif self.check == 4:
+                self.img = self.im2_hflip
+            self.im_vflip = cv2.flip(self.img, 1)
+            cv2.imwrite("im_vflip.jpg", self.im_vflip)
             self.pixmap.load("im_vflip.jpg")
 
         if self.checkbox5.isChecked() == True:
             print('checkbox5 click')
             self.savefile()
-
-
 
         self.lbl_img.setPixmap(self.pixmap)  # 이미지 보여주는 줄
         print('run click')
@@ -143,33 +181,78 @@ class MyApp(QWidget):
     def image_resize(self):
         if self.checkbox1.isChecked() == True:
             self.input_mask_changed()
+            self.check += 1
+            self.imgresize += 1
+            print(self.check)
     def input_mask_changed(self):
-        self.ReSize_A.setInputMask('0.0')
-  # 사진 각도변경
+        self.ReSize_A.setInputMask('1.0')
+# 사진 각도변경
     def image_rotation(self):
         if self.checkbox2.isChecked() == True:
             self.input_mask_change2()
+            self.check += 1
+            self.imgrot += 1
+            print(self.check)
     def input_mask_change2(self):
         self.RoTate.setInputMask('000')
   # hflip 함수
     def image_hflip(self):
-        print('hflip click')
+        self.check += 1
+        self.imghflip += 1
+        print(self.check)
+        print(self.imghflip)
   # vflip 함수
     def image_vflip(self):
+        self.check += 1
+        self.imgvflip += 1
+        print(self.check)
         print('vflip click2')
   # rename 함수
     def image_rename(self):
+        print(self.check)
         print('rename click')
+
     def savefile(self):
-        self.search_image = '/home/cj/Downloads/'
-        name, _ = QFileDialog.getSaveFileName(self, self.search_image, options=QFileDialog.DontUseNativeDialog)
-        cv2.imwrite(name, self.resize_Img)
+        self.search_path = '/home/cj/Downloads/'
+        name, _ = QFileDialog.getSaveFileName(self, self.search_path, options=QFileDialog.DontUseNativeDialog)
 
-
-
-
-
-
+        if self.check == 1:
+            if self.imgresize == 1:
+                cv2.imwrite(name, self.resize_Img)
+            elif self.imgrot == 1:
+                cv2.imwrite(name, self.rotation_Img)
+            elif self.imghflip == 1:
+                cv2.imwrite(name, self.im2_hflip)
+            elif self.imgvflip == 1:
+                cv2.imwrite(name, self.im_vflip)
+        elif self.check == 2:
+            if self.imgresize == 1:
+                if self.imgrot == 1:
+                    cv2.imwrite(name, self.rotation_Img)
+                elif self.imghflip == 1:
+                    cv2.imwrite(name, self.im2_hflip)
+                elif self.imgvflip == 1:
+                    cv2.imwrite(name, self.im_vflip)
+            elif self.imgrot == 1:
+                if self.imghflip == 1:
+                    cv2.imwrite(name, self.im2_hflip)
+                elif self.imgvflip == 1:
+                    cv2.imwrite(name, self.im_vflip)
+            elif self.imghflip == 1:
+                cv2.imwrite(name, self.im_vflip)
+        elif self.check == 3:
+            if self.imgresize == 1:
+                if self.imgrot == 1:
+                    if self.imghflip == 1:
+                        cv2.imwrite(name, self.im2_hflip)
+                    elif self.imgvflip == 1:
+                        cv2.imwrite(name, self.im_vflip)
+                if self.imghflip == 1:
+                    cv2.imwrite(name, self.im_vflip)
+            elif self.imgrot == 1:
+                cv2.imwrite(name, self.im_vflip)
+        elif self.check == 4:
+            cv2.imwrite(name, self.im_vflip)
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
