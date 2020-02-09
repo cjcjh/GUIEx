@@ -1,9 +1,7 @@
 import math
-
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import (QApplication, QGridLayout, QLayout, QLineEdit,
                              QSizePolicy, QToolButton, QWidget)
-
 
 class Button(QToolButton):
     def __init__(self, text, parent=None):
