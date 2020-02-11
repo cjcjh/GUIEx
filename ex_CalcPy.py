@@ -42,38 +42,22 @@ class PyCalcUi(QMainWindow):
         # Create the display widget
         self.display = QLineEdit()
         # Set some display's properties
-        self.display.setFixedHeight(35)
-        self.display.setAlignment(Qt.AlignRight)
+        self.display.setFixedHeight(35)         # 세로길이
+        self.display.setAlignment(Qt.AlignRight) # 오른쪽부터입력
         self.display.setReadOnly(True)
         # Add the display to the general layout
-        self.generalLayout.addWidget(self.display)
+        self.generalLayout.addWidget(self.display)  # lineEdit widget add
 
     def _createButtons(self):
         """Create the buttons."""
         self.buttons = {}
-        buttonsLayout = QGridLayout()
+        buttonsLayout = QGridLayout()   # using button layout
         # Button text | position on the QGridLayout
         buttons = {
-            "7": (0, 0),
-            "8": (0, 1),
-            "9": (0, 2),
-            "/": (0, 3),
-            "C": (0, 4),
-            "4": (1, 0),
-            "5": (1, 1),
-            "6": (1, 2),
-            "*": (1, 3),
-            "(": (1, 4),
-            "1": (2, 0),
-            "2": (2, 1),
-            "3": (2, 2),
-            "-": (2, 3),
-            ")": (2, 4),
-            "0": (3, 0),
-            "00": (3, 1),
-            ".": (3, 2),
-            "+": (3, 3),
-            "=": (3, 4),
+            "7": (0, 0), "8": (0, 1), "9": (0, 2), "/": (0, 3), "C": (0, 4),
+            "4": (1, 0), "5": (1, 1), "6": (1, 2), "*": (1, 3), "(": (1, 4),
+            "1": (2, 0), "2": (2, 1), "3": (2, 2), "-": (2, 3), ")": (2, 4),
+            "0": (3, 0), "00": (3, 1), ".": (3, 2), "+": (3, 3), "=": (3, 4),
         }
         # Create the buttons and add them to the grid layout
         for btnText, pos in buttons.items():

@@ -6,6 +6,7 @@ from _thread import *
 
 enclosure_queue = Queue()  # 웹캠 돌리기위해 큐설정
 
+# 쓰레드 함수
 def threaded(client_socket, addr, queue):
     print('Connected by :', addr[0], ':', addr[1])
     while True:
@@ -46,6 +47,8 @@ PORT = 9999
 
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)    # IP4v 에 TCP
 server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+# SOL_SOCKET : 소켓레벨설정 -> reuseaddr허용
+# SO_REUSEADDR : 이미 사용된 주소를 재사용하도록 함
 server_socket.bind((HOST, PORT))  # bind : 서버소켓 IP주소, port번호 할당
 server_socket.listen(5)    # 5, 0 : 적당한 값
 
