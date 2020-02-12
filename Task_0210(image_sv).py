@@ -15,10 +15,12 @@ def threaded(client_socket, addr, queue):
             if not data:    # 빈 문자열을 수신하면 루프를 중지
                 print('Disconnected by ' + addr[0], ':', addr[1])
                 break
-            stringData = queue.get()    # 큐데이터 get(버퍼사이즈) 저장
+            stringData = queue.get()    # 큐데이터 얻기(서버가 넣어준거)
+            print(str(len(stringData)).ljust(16).encode())
             client_socket.send(str(len(stringData)).ljust(16).encode())
-            client_socket.send(stringData)
-        except ConnectionResetError as e:
+            # client가 인식할 때 string형태로 ljust(왼쪽정렬) 변환한 문자열(크기) 전송
+            client_socket.send(stringData)  # stringdata 클라이언트소켓에게 이미지 전송
+        except ConnectionResetError as e:   # 연결오류시
             print('Disconnected by ' + addr[0], ':', addr[1])
             break
     client_socket.close()
@@ -34,9 +36,9 @@ def webcam(queue):
         print(encode_param)
         result, imgencode = cv2.imencode('.jpg', frame, encode_param) # imencode(ext(확장자), img, parameters)
         data = numpy.array(imgencode) # numpy.array 배열 이미지인코딩하여 데이터
-        stringData = data.tostring() # 추출 데이타이미지 string형태로 변환
+        stringData = data.tostring() # 촬영한 한 프레임 데이타이미지 string형태로 변환
 
-        queue.put(stringData)  # queue에 추출데이터 놓기
+        queue.put(stringData)  # queue에 한 프레임데이터 넣기
         cv2.imshow('image', frame) # 영상 보여주기
         key = cv2.waitKey(1)  # 종료 키
         if key == 27:
