@@ -4,7 +4,7 @@ import numpy as np
 
 # White 배경 생성
 img = np.zeros(shape=(512,512,3), dtype=np.uint8) + 255
-# zeris = 해당배열에 모두 0을 집어 넣음
+# zeros = 해당배열에 모두 0을 집어 넣음  : 0넣으니 검은색이고 + 255하니 백색
 #img = np.ones((512,512,3), np.uint8) * 255
 # ones = 해당배열에 모두 1을 집어 넣음
 #img = np.full((512,512,3), (255, 255, 255), dtype= np.uint8)
