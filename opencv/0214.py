@@ -16,9 +16,9 @@ class Video(animation.FuncAnimation):
 # interval : number, optional
 # repeat_delay : number, optional
 # repeat : bool, optional
-# blit : bool, optional
+# blit : bool, optional : 실시간 성능을 극적으로 개선하기 위해
 # cache_frame_data : bool, optional
-# **kwargs가 뭐지??
+# **kwargs : 가변인자
         if fig is None:
             self.fig = plt.figure()
             self.fig.canvas.set_window_title('Video Capture')
@@ -40,7 +40,8 @@ class Video(animation.FuncAnimation):
         retval, self.frame = self.cap.read()
         if retval:
             self.im.set_array(cv2.cvtColor(camera.frame, cv2.COLOR_BGR2RGB))
-    #       return self.im,
+        return self.im
+        # set_array : Set the image array from numpy array A
 
     def close(self):
         if self.cap.isOpened():
