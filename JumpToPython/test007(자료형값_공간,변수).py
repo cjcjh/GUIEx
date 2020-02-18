@@ -1,15 +1,14 @@
-from copy import  copy
-
+from copy import copy
 # 변수 : 파이썬에서 사용하는 변수는 객체를 가리키는 것이라고 말할 수 있다.
 
 a = [1, 2, 3]
 print(id(a))    # a변수가 가리키는 메모리의 주소
 b = a   # 리스트 복사
-print(id(b))
+print(id(b))    # b의 메모리 주소 a와 같다.
 print(a is b)   # a와 b가 가리키는 객체가 동일한가? : True
 a[1] = 4
 print(a)
-print(b)
+print(b)    # a 객체값 바꿨는데 b도 바뀐거 확인 가능하다.
 
 #[:] 사용
 a = [1, 2, 3]
@@ -28,7 +27,6 @@ print(a)
 print(b)
 print(id(a))
 print(id(b))
-
 
 #변수 만드는 여러가지 방법
 a, b = ('python', 'life')

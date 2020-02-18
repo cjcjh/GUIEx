@@ -11,7 +11,7 @@ print(average)
 num = 13
 if num % 2 == 1 :
     print("홀수")
-elif num % 2 == 0 :
+else:
     print("짝수")
 
 # Q3
@@ -63,11 +63,11 @@ print(a)
 a = {'A':90, 'B':80, 'C':70}
 result = a.pop('B')
 print(a)
-print(result)
+print(result)   # B의 Value만 나옴
 
 # Q11
 a = [1, 1, 1, 2, 2, 3, 3, 3, 4, 4, 5]
-aSet = set(a)   # a 리스트를 집합자료형으로
+aSet = set(a)   # a 리스트를 집합자료형으로 중복요소 하나로
 print(aSet)
 b = list(aSet)  # 집합자료형을 리스트자료형으로
 print(b)
