@@ -16,7 +16,7 @@ cal.minus(7)
 print(cal.value)
 
 # Q2
-class MaxLimitCalculator:
+class Calculator:
     def __init__(self):
         self.value = 0
 
@@ -24,10 +24,14 @@ class MaxLimitCalculator:
         if val < 100:
             self.value += val
         else:
-            print('100 이상은 안돼')
+            print('100이상의 값은 안돼')
 
         if self.value > 100:
             self.value = 100
+
+class MaxLimitCalculator(Calculator):
+    def __init__(self):
+        self.value = 0
 
 cal = MaxLimitCalculator()
 cal.add(50)

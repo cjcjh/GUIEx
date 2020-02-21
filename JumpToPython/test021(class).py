@@ -39,6 +39,7 @@ class FourCal:
         result = self.first / self.second
         return result
 
+class MoreFourCal(FourCal):
     def pow(self):
         result = self.first ** self.second
         return result
@@ -57,4 +58,5 @@ print(b.add())
 print(b.mul())
 print(b.sub())
 print(b.div())
+a = MoreFourCal(4, 2)
 print(a.pow())
