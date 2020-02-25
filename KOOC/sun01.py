@@ -9,8 +9,8 @@ def animate_sunrise(sun):
   y0 = h + r              # sun 세로 중심 위치
   xradius = w / 2.0 - r   # x 측 반지름(중심점 - r)
   yradius = h             # y 측 반지름
-  for angle in range(181):    # 타원 방정식 참고
-    rad = (angle/180.0) * math.pi # radian 단위를 씀
+  for angle in range(181):    # 타원 방정식 참고 0 ~ 180도
+    rad = (angle/180.0) * math.pi # python 삼각함수는 radian 단위를 씀
     x = x0 - xradius * math.cos(rad)
     y = y0 - yradius * math.sin(rad)
     sun.moveTo(x, y)
