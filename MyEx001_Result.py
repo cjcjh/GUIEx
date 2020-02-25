@@ -8,9 +8,7 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 
-
 class MyApp(QWidget):
-
     def __init__(self, parent=None):
         super().__init__()
         self.initUI()

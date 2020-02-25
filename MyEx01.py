@@ -14,12 +14,12 @@ class MyApp(QMainWindow):
 
     def initUI(self):
         #menu open
-        openFile = QAction(QIcon('/home/cj/Downloads/web.png'), 'Open', self)
+        openFile = QAction(QIcon('./im_hflip.jpg'), 'Open', self)
         openFile.setShortcut('Ctrl+O')
         openFile.setStatusTip('Open New File')
         openFile.triggered.connect(self.openFile) # openfile connect
         #menu exit
-        exitAction = QAction(QIcon('/home/cj/Downloads/exit.png'), 'Exit', self)
+        exitAction = QAction(QIcon('./im_vflip.jpg'), 'Exit', self)
         exitAction.setShortcut('Ctrl+Q')
         exitAction.setStatusTip('Exit application')
         exitAction.triggered.connect(qApp.quit)  # qApp.quit connect
@@ -27,9 +27,9 @@ class MyApp(QMainWindow):
         #menubar
         menubar = self.menuBar()
         menubar.setNativeMenuBar(False)
-        filemenu = menubar.addMenu('&File')
-        filemenu.addAction(openFile)
-        filemenu.addAction(exitAction)
+        filemenu = menubar.addMenu('&File') # 바로보이는 메뉴이름
+        filemenu.addAction(openFile)    # QAction 실행
+        filemenu.addAction(exitAction)  # QAction 실행
         # 오픈하는 이미지 사이즈
         self.width = 640
         self.height = 640
