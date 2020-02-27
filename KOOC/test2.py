@@ -3,14 +3,14 @@ import random
 FACES = list(range(2, 11)) + ['Jack', 'Queen', 'King', 'Ace']
 SUITS = ['Clubs', 'Diamonds', 'Hearts', 'Spades']
 
-class Card(object):     # object 클래스
+class Card(object):
     """A card has a face and suit."""
     def __init__(self, face, suit):
         assert (face in FACES and suit in SUITS) # assert : 사용자가 잘입력했나 확인
-        self.face = face    # face = 'Jack', 'Queen', 'King', 'Ace'
-        self.suit = suit    # suit = 'Clubs', 'Diamonds', 'Hearts', 'Spades'
+        self.face = face
+        self.suit = suit
 
-    def __str__(self):  #
+    def __str__(self):
         article = "a "
         if self.face in [8, "Ace"]: article = "an "
         return article + str(self.face) + " of " + self.suit

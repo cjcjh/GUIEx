@@ -2,7 +2,7 @@
 # Version with Chicken objects by OC.
 import time
 from cs1graphics import *
-
+# cs1graogucs : 다양한 시스템에서 신뢰성이 떨어졌기 때문에, 싱글스레드 모드만을 권장하고 있다.
 class Chicken(object):
     """Graphic representation of a chicken."""
     pass
