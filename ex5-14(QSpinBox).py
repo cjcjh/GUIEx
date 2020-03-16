@@ -1,11 +1,8 @@
 ## Ex 5-14. QSpinBox.
-
 import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QSpinBox, QVBoxLayout
 
-
 class MyApp(QWidget):
-
     def __init__(self):
         super().__init__()
         self.initUI()
@@ -18,7 +15,6 @@ class MyApp(QWidget):
         # self.spinbox.setRange(-10, 30)
         self.spinbox.setSingleStep(2)
         self.lbl2 = QLabel('0')
-
         self.spinbox.valueChanged.connect(self.value_changed)
 
         vbox = QVBoxLayout()
@@ -28,14 +24,12 @@ class MyApp(QWidget):
         vbox.addStretch()
 
         self.setLayout(vbox)
-
         self.setWindowTitle('QSpinBox')
         self.setGeometry(300, 300, 300, 200)
         self.show()
 
     def value_changed(self):
         self.lbl2.setText(str(self.spinbox.value()))
-
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

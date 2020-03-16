@@ -1,11 +1,8 @@
 ## Ex 5-20. QTextEdit.
-
 import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QTextEdit, QVBoxLayout
 
-
 class MyApp(QWidget):
-
     def __init__(self):
         super().__init__()
         self.initUI()

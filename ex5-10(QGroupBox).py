@@ -4,9 +4,7 @@ import sys
 from PyQt5.QtWidgets import (QApplication, QWidget, QGroupBox, QRadioButton
 , QCheckBox, QPushButton, QMenu, QGridLayout, QVBoxLayout)
 
-
 class MyApp(QWidget):
-
     def __init__(self):
         super().__init__()
         self.initUI()
@@ -19,7 +17,6 @@ class MyApp(QWidget):
         grid.addWidget(self.createPushButtonGroup(), 1, 1)
 
         self.setLayout(grid)
-
         self.setWindowTitle('Box Layout')
         self.setGeometry(300, 300, 480, 320)
         self.show()

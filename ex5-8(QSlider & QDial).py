@@ -1,12 +1,9 @@
 ## Ex 5-8. QSlider & QDial.
-
 import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QSlider, QDial, QPushButton
 from PyQt5.QtCore import Qt
 
-
 class MyApp(QWidget):
-
     def __init__(self):
         super().__init__()
         self.initUI()

@@ -1,11 +1,8 @@
 ## Ex 5-11-1. QTabWidget (Advanced).
-
 import sys
 from PyQt5.QtWidgets import *
 
-
 class MyApp(QDialog):
-
     def __init__(self):
         super().__init__()
 
@@ -26,17 +23,13 @@ class MyApp(QDialog):
         vbox.addWidget(buttonbox)
 
         self.setLayout(vbox)
-
         self.setWindowTitle('QTabWidget')
         self.setGeometry(300, 300, 400, 300)
         self.show()
 
-
 class FirstTab(QWidget):
-
     def __init__(self):
         super().__init__()
-
         self.initUI()
 
     def initUI(self):
@@ -58,9 +51,7 @@ class FirstTab(QWidget):
 
         self.setLayout(vbox)
 
-
 class SecondTab(QWidget):
-
     def __init__(self):
         super().__init__()
         self.initUI()
@@ -91,9 +82,7 @@ class SecondTab(QWidget):
         vbox.addWidget(learn_group)
         self.setLayout(vbox)
 
-
 class ThirdTab(QWidget):
-
     def __init__(self):
         super().__init__()
         self.initUI()
@@ -110,7 +99,6 @@ class ThirdTab(QWidget):
         vbox.addWidget(checkbox)
 
         self.setLayout(vbox)
-
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

@@ -19,6 +19,7 @@ class MyApp(QWidget):
         btn.setToolTip('This is a <b>QPushButton</b> widget')
         btn.move(50, 50)
         btn.resize(btn.sizeHint())
+        btn.clicked.connect(QApplication.instance().quit)  # 클릭시 종료
 
         self.setWindowTitle('Tooltips')
         self.setGeometry(300, 300, 300, 200)

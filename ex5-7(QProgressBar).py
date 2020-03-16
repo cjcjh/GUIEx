@@ -4,9 +4,7 @@ import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QProgressBar
 from PyQt5.QtCore import QBasicTimer
 
-
 class MyApp(QWidget):
-
     def __init__(self):
         super().__init__()
         self.initUI()

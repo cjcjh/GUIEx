@@ -1,19 +1,15 @@
 ## Ex 5-18. QDateTimeEdit.
-
 import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QDateTimeEdit, QVBoxLayout
 from PyQt5.QtCore import QDateTime
 
-
 class MyApp(QWidget):
-
     def __init__(self):
         super().__init__()
         self.initUI()
 
     def initUI(self):
         lbl = QLabel('QTimeEdit')
-
         datetimeedit = QDateTimeEdit(self)
         datetimeedit.setDateTime(QDateTime.currentDateTime())
         datetimeedit.setDateTimeRange(QDateTime(1900, 1, 1, 00, 00, 00), QDateTime(2100, 1, 1, 00, 00, 00))
@@ -25,7 +21,6 @@ class MyApp(QWidget):
         vbox.addStretch()
 
         self.setLayout(vbox)
-
         self.setWindowTitle('QDateTimeEdit')
         self.setGeometry(300, 300, 300, 200)
         self.show()

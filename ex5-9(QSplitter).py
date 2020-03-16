@@ -1,12 +1,9 @@
 ## Ex 5-9. QSplitter.
-
 import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QHBoxLayout, QFrame, QSplitter
 from PyQt5.QtCore import Qt
 
-
 class MyApp(QWidget):
-
     def __init__(self):
         super().__init__()
         self.initUI()
@@ -38,7 +35,6 @@ class MyApp(QWidget):
 
         hbox.addWidget(splitter2)
         self.setLayout(hbox)
-
         self.setGeometry(300, 300, 300, 200)
         self.setWindowTitle('QSplitter')
         self.show()

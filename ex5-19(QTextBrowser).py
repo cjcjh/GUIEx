@@ -1,11 +1,8 @@
 ## Ex 5-19. QTextBrowser.
-
 import sys
 from PyQt5.QtWidgets import (QApplication, QWidget, QLineEdit, QTextBrowser, QPushButton, QVBoxLayout)
 
-
 class MyApp(QWidget):
-
     def __init__(self):
         super().__init__()
         self.initUI()
@@ -27,7 +24,6 @@ class MyApp(QWidget):
         vbox.addWidget(self.clear_btn, 2)
 
         self.setLayout(vbox)
-
         self.setWindowTitle('QTextBrowser')
         self.setGeometry(300, 300, 300, 300)
         self.show()

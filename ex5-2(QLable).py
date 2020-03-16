@@ -1,19 +1,14 @@
 ## Ex 5-2. QLabel.
-
 import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QVBoxLayout
 from PyQt5.QtCore import Qt
 
-
 class MyApp(QWidget):
-
     def __init__(self):
         super().__init__()
-
         self.initUI()
 
     def initUI(self):
-
         label1 = QLabel('First Label', self)
         label1.setAlignment(Qt.AlignCenter)
 

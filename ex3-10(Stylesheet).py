@@ -3,15 +3,12 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QVBoxLayout
 
-
 class MyApp(QWidget):
-
     def __init__(self):
         super().__init__()
         self.initUI()
 
     def initUI(self):
-
         lbl_red = QLabel('Red')
         lbl_green = QLabel('Green')
         lbl_blue = QLabel('Blue')

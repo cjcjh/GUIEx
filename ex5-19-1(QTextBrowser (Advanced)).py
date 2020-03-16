@@ -5,9 +5,7 @@ from PyQt5.QtWidgets import *
 import requests
 from bs4 import BeautifulSoup
 
-
 class MyApp(QWidget):
-
     def __init__(self):
         super().__init__()
         self.initUI()
@@ -33,7 +31,6 @@ class MyApp(QWidget):
         grid.addWidget(self.tb, 2, 0, 1, 4)
 
         self.setLayout(grid)
-
         self.setWindowTitle('Web Crawler')
         self.setGeometry(100, 100, 700, 450)
         self.show()

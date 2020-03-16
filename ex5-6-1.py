@@ -16,13 +16,11 @@ class MyApp(QWidget):
         # echo_group
         self.echo_group = QGroupBox('Echo')
         self.echo_label = QLabel('Mode:')
-
         self.echo_cb = QComboBox()
         self.echo_cb.addItem('Normal')
         self.echo_cb.addItem('No Echo')
         self.echo_cb.addItem('Password')
         self.echo_cb.addItem('PasswordEchoOnEdit')
-
         self.echo_le = QLineEdit()
         self.echo_le.setPlaceholderText('Placeholder Text')
         self.echo_le.setFocus()
@@ -30,12 +28,10 @@ class MyApp(QWidget):
         # validator_group
         self.validator_group = QGroupBox('Validator')
         self.validator_label = QLabel('Type:')
-
         self.validator_cb = QComboBox()
         self.validator_cb.addItem('No validator')
         self.validator_cb.addItem('Integer validator')
         self.validator_cb.addItem('Double validator')
-
         self.validator_le = QLineEdit()
         self.validator_le.setPlaceholderText('Placeholder Text')
 

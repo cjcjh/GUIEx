@@ -16,9 +16,9 @@ class MyApp(QWidget):
         grid.addWidget(QLabel('Author:'), 1, 0)
         grid.addWidget(QLabel('Review:'), 2, 0)
 
-        #grid.addWidget(QLineEdit(), 0, 1)
-        #grid.addWidget(QLineEdit(), 1, 1)
-        #grid.addWidget(QTextEdit(), 2, 1)
+        grid.addWidget(QLineEdit(), 0, 1)
+        grid.addWidget(QLineEdit(), 1, 1)
+        grid.addWidget(QTextEdit(), 2, 1)
 
         self.setWindowTitle('QGridLayout')
         self.setGeometry(300, 300, 300, 200)

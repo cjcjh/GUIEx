@@ -1,12 +1,9 @@
 ## Ex 5-13. QCalenderWidget.
-
 import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QVBoxLayout, QCalendarWidget
 from PyQt5.QtCore import QDate
 
-
 class MyApp(QWidget):
-
     def __init__(self):
         super().__init__()
         self.initUI()

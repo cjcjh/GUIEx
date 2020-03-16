@@ -1,11 +1,8 @@
 ## Ex 5-11. QTabWidget.
-
 import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QTabWidget, QVBoxLayout
 
-
 class MyApp(QWidget):
-
     def __init__(self):
         super().__init__()
         self.initUI()
@@ -26,7 +23,6 @@ class MyApp(QWidget):
         self.setWindowTitle('QTabWidget')
         self.setGeometry(300, 300, 300, 200)
         self.show()
-
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

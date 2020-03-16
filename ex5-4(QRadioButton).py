@@ -1,11 +1,8 @@
 ## Ex 5-4. QRadioButton.
-
 import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QRadioButton
 
-
 class MyApp(QWidget):
-
     def __init__(self):
         super().__init__()
         self.initUI()

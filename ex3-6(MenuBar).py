@@ -13,9 +13,9 @@ class MyApp(QMainWindow):
 
     def initUI(self):
         exitAction = QAction(QIcon('exit.png'), 'Exit', self)
-        exitAction.setShortcut('Ctrl+Q')
-        exitAction.setStatusTip('Exit application')
-        exitAction.triggered.connect(qApp.quit)
+        exitAction.setShortcut('Ctrl+Q')    # 단축키
+        exitAction.setStatusTip('Exit application') # 역할표시
+        exitAction.triggered.connect(qApp.quit)     # 클릭시 종료
 
         self.statusBar()
 
